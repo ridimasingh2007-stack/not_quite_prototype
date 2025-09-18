@@ -39,7 +39,7 @@ def get_quiz_questions():
     return jsonify(questions)
 
 # submitting quiz answers and calculating score~
-app.route('/submit_quiz', methods=['POST'])
+@app.route('/submit_quiz', methods=['POST'])
 def submit_quiz():
     data = request.get_json()
     answers = data.get('answers')  # List of {'question_id': .., 'selected_option': ..}
@@ -87,4 +87,5 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
     
+
  
