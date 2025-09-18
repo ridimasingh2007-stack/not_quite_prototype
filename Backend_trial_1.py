@@ -73,7 +73,7 @@ def text_to_speech():
     engine.runAndWait()
     return jsonify({"status": "success", "message": "Text converted to speech"})
 
-# --- New: Voice Recognition placeholder ---
+# Voice Recognition placeholder
 @app.route('/voice_recognition', methods=['POST'])
 def voice_recognition():
     # Placeholder, real integration needed with audio processing
@@ -89,3 +89,4 @@ if __name__ == '__main__':
     
 
  
+
