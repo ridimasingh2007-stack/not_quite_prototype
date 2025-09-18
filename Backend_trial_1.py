@@ -64,7 +64,7 @@ def get_progress():
     progress_data = {"quizzes_completed": 3, "average_score": 7.5}  # Replace with real logic
     return jsonify({"user_id": user_id, "progress": progress_data})
 
-app.route('/tts', methods=['POST'])
+@app.route('/tts', methods=['POST'])
 def text_to_speech():
     data = request.get_json()
     text = data.get('text')
@@ -89,4 +89,5 @@ if __name__ == '__main__':
     
 
  
+
 
