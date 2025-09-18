@@ -1,15 +1,14 @@
 from flask import Flask, request, jsonify
-import pandas as pd
 import json
 import pyttsx3
 app = Flask(__name__)
 
 # emergency messages~
 def load_messages(disaster=None):
-    df = pd.read_csv('backend_trial_1.csv')
+    with open('emergency_messages.json', 'r') as f:
+        messages = json.load(f)
     if disaster:
-        df = df[df['disaster'].str.lower() == disaster.lower()]
-    messages = df.to_dict(orient='records')
+        messages = [m for m in messages if m['disaster'].lower() == disaster.lower()]
     return messages
 
 # quiz questions~
@@ -89,5 +88,6 @@ if __name__ == '__main__':
     
 
  
+
 
 
