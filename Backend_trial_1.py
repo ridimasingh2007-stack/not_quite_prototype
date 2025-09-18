@@ -49,7 +49,7 @@ def submit_quiz():
     for ans in answers:
         question_id = ans['question_id']
         selected_option = ans['selected_option']
-        correct_answer = next((q['answer'] for q in questions if q['id'] == question_id), None)
+        correct_answer = next((q['Answer'] for q in questions if q['id'] == question_id), None)
         if selected_option == correct_answer:
             score += 1
     feedback = "Great job!" if score > (len(answers)/2) else "Keep practicing!"
@@ -88,6 +88,7 @@ if __name__ == '__main__':
     
 
  
+
 
 
 
