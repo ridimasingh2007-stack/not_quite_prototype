@@ -3,6 +3,30 @@ import json
 import pyttsx3
 app = Flask(__name__)
 
+
+
+# Error handlers for structured JSON error responses
+@app.errorhandler(400)
+def bad_request(e):
+    return jsonify({"error": "Bad Request", "message": str(e)}), 400
+
+@app.errorhandler(404)
+def not_found(e):
+    return jsonify({"error": "Not Found", "message": str(e)}), 404
+
+@app.errorhandler(500)
+def server_error(e):
+    return jsonify({"error": "Internal Server Error", "message": "An unexpected error occurred."}), 500
+
+
+# Initialize TTS engine once
+try:
+    engine = pyttsx3.init()
+except Exception as e:
+    print(f"Warning: TTS engine failed to initialize: {e}")
+    engine = None
+
+
 # emergency messages~
 def load_messages(disaster=None):
     with open('emergency_messages.json', 'r') as f:
@@ -49,7 +73,7 @@ def submit_quiz():
     for ans in answers:
         question_id = ans['question_id']
         selected_option = ans['selected_option']
-        correct_answer = next((q['Answer'] for q in questions if q['id'] == question_id), None)
+        correct_answer = next((q['answer'] for q in questions if q['id'] == question_id), None)
         if selected_option == correct_answer:
             score += 1
     feedback = "Great job!" if score > (len(answers)/2) else "Keep practicing!"
@@ -63,7 +87,7 @@ def get_progress():
     progress_data = {"quizzes_completed": 3, "average_score": 7.5}  # Replace with real logic
     return jsonify({"user_id": user_id, "progress": progress_data})
 
-@app.route('/tts', methods=['POST'])
+app.route('/tts', methods=['POST'])
 def text_to_speech():
     data = request.get_json()
     text = data.get('text')
@@ -72,7 +96,7 @@ def text_to_speech():
     engine.runAndWait()
     return jsonify({"status": "success", "message": "Text converted to speech"})
 
-# Voice Recognition placeholder
+# --- New: Voice Recognition placeholder ---
 @app.route('/voice_recognition', methods=['POST'])
 def voice_recognition():
     # Placeholder, real integration needed with audio processing
@@ -86,9 +110,4 @@ if __name__ == '__main__':
     port = int(os.environ.get("PORT", 10000))
     app.run(host='0.0.0.0', port=port)
     
-
  
-
-
-
-
