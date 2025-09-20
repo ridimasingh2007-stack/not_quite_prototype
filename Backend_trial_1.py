@@ -18,15 +18,6 @@ def not_found(e):
 def server_error(e):
     return jsonify({"error": "Internal Server Error", "message": "An unexpected error occurred."}), 500
 
-
-# Initialize TTS engine once
-try:
-    engine = pyttsx3.init()
-except Exception as e:
-    print(f"Warning: TTS engine failed to initialize: {e}")
-    engine = None
-
-
 # emergency messages~
 def load_messages(disaster=None):
     with open('emergency_messages.json', 'r') as f:
@@ -73,7 +64,7 @@ def submit_quiz():
     for ans in answers:
         question_id = ans['question_id']
         selected_option = ans['selected_option']
-        correct_answer = next((q['answer'] for q in questions if q['id'] == question_id), None)
+        correct_answer = next((q['Answer'] for q in questions if q['id'] == question_id), None)
         if selected_option == correct_answer:
             score += 1
     feedback = "Great job!" if score > (len(answers)/2) else "Keep practicing!"
@@ -87,14 +78,18 @@ def get_progress():
     progress_data = {"quizzes_completed": 3, "average_score": 7.5}  # Replace with real logic
     return jsonify({"user_id": user_id, "progress": progress_data})
 
-app.route('/tts', methods=['POST'])
+@app.route('/tts', methods=['POST'])
 def text_to_speech():
     data = request.get_json()
     text = data.get('text')
-    engine = pyttsx3.init()
+    global engine
+    if not text or engine is None:
+        engine = pyttsx3.init()
     engine.say(text)
     engine.runAndWait()
     return jsonify({"status": "success", "message": "Text converted to speech"})
+
+
 
 # --- New: Voice Recognition placeholder ---
 @app.route('/voice_recognition', methods=['POST'])
@@ -111,3 +106,4 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
     
  
+
