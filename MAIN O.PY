@@ -183,7 +183,7 @@ class EmergencyHelplinesScreen(Screen):
 
     def on_pre_enter(self):
         # Load JSON file
-        json_path = os.path.join(os.path.dirname(__file__), 'quiz.json')
+        json_path = os.path.join(os.path.dirname(__file__), 'emergency_messages.json')
         with open(json_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
 
@@ -305,12 +305,12 @@ class MyApp(App):
         return Builder.load_file('DISASTRA.kv')
     
     def load_disasters_data(self):
-        json_path = os.path.join(os.path.dirname(__file__), 'quiz.json')
+        json_path = os.path.join(os.path.dirname(__file__), 'emergency_messages.json')
         with open(json_path, 'r', encoding='utf-8') as f:
             self.disasters_data = json.load(f)
 
     def load_quiz_data(self):
-        json_path = os.path.join(os.path.dirname(__file__), 'disasters.json') #iz file name
+        json_path = os.path.join(os.path.dirname(__file__), 'quiz_questions.json') #iz file name
         with open(json_path, 'r', encoding='utf-8') as f:
             self.quiz_data = json.load(f)
 
