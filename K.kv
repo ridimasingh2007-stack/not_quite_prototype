@@ -1,0 +1,561 @@
+ScreenManager:
+    WelcomeScreen:
+    LoginScreen:
+    RegistrationScreen:
+    MenuScreen:
+
+<WelcomeScreen>:
+    name: 'welcome'
+    
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(30)
+        padding: dp(40)
+        
+        Image:
+            source: 'logo.png'
+            size_hint: 1, 0.4
+        
+        Label:
+            text: 'NIVAAR'
+            font_size: '40sp'
+            bold: True
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.3
+        
+        Label:
+            text: 'Your Disaster Awareness Friend'
+            font_size: '18sp'
+            color: 0.9, 0.9, 0.9, 1
+            size_hint: 1, 0.3
+
+<LoginScreen>:
+    name: 'login'
+    
+    canvas.before:
+        Color:
+            rgba: 0.05, 0.15, 0.25, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [dp(20), dp(30)]
+        spacing: dp(30) 
+            
+            # LEFT/TOP SECTION (Logo and Branding)
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.25) 
+            height: dp(250)
+            spacing: dp(15)
+                
+    
+        # App Logo
+        BoxLayout:
+            size_hint_y: 0.25
+            orientation: 'vertical'
+
+            Image:
+                source: 'logo.png'
+                size_hint: None, None
+                size: dp(100), dp(100)
+                pos_hint: {'center_x': 0.5}
+                
+
+            
+            # RIGHT/BOTTOM SECTION (Login Form Card)
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint: (1, None) 
+                height: dp(450) 
+                
+                # Login Form Card
+                BoxLayout:
+                    orientation: 'vertical'
+                    padding: [dp(30), dp(35)]
+                    spacing: dp(20)
+                    size_hint: (1, 1) 
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    
+                    # White card background
+                    canvas.before:
+                        Color:
+                            rgba: 0.95, 0.95, 0.97, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [dp(20)]
+                    
+                    # Login Header Section
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: dp(70)
+                        spacing: dp(5)
+                        
+                        Label:
+                            text: 'Login'
+                            font_size: '26sp' 
+                            bold: True
+                            color: 0.1, 0.1, 0.1, 1
+                            size_hint_y: None
+                            height: dp(35)
+                        
+                        Label:
+                            text: 'Sign in to continue.'
+                            font_size: '14sp' 
+                            color: 0.4, 0.4, 0.4, 1
+                            size_hint_y: None
+                            height: dp(25)
+                    
+                    # Input Fields Section
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: dp(140)
+                        spacing: dp(15)
+                        
+                        # Name Input Field
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: None
+                            height: dp(60)
+                            spacing: dp(5)
+                            
+                            Label:
+                                text: 'NAME'
+                                font_size: '11sp'
+                                color: 0.4, 0.4, 0.4, 1
+                                size_hint_y: None
+                                height: dp(15)
+                                halign: 'left'
+                                text_size: self.size
+                            
+                            TextInput:
+                                id: name_input
+                                hint_text: 'Enter your name'
+                                multiline: False
+                                font_size: '15sp' 
+                                size_hint_y: None
+                                height: dp(40)
+                                background_color: 0.85, 0.85, 0.85, 1
+                                foreground_color: 0.1, 0.1, 0.1, 1
+                                cursor_color: 0.1, 0.3, 0.6, 1
+                                padding: [dp(12), dp(8)]
+                        
+                        # Password Input Field
+                        BoxLayout:
+                            orientation: 'vertical'
+                            size_hint_y: None
+                            height: dp(60)
+                            spacing: dp(5)
+                            
+                            Label:
+                                text: 'PASSWORD'
+                                font_size: '11sp'
+                                color: 0.4, 0.4, 0.4, 1
+                                size_hint_y: None
+                                height: dp(15)
+                                halign: 'left'
+                                text_size: self.size
+                            
+                            TextInput:
+                                id: password_input
+                                hint_text: 'Enter your password'
+                                password: True
+                                multiline: False
+                                font_size: '15sp'
+                                size_hint_y: None
+                                height: dp(40)
+                                background_color: 0.85, 0.85, 0.85, 1
+                                foreground_color: 0.1, 0.1, 0.1, 1
+                                cursor_color: 0.1, 0.3, 0.6, 1
+                                padding: [dp(12), dp(8)]
+                    
+                    # Error Message
+                    Label:
+                        id: error_label
+                        text: ''
+                        color: 0.8, 0.2, 0.2, 1
+                        font_size: '11sp'
+                        size_hint_y: None
+                        height: dp(20)
+                        text_size: self.size
+                        halign: 'center'
+                        valign: 'middle'
+                    
+                    # Login Button
+                    Button:
+                        text: 'Log in'
+                        font_size: '17sp' 
+                        bold: True
+                        size_hint_y: None
+                        height: dp(45)
+                        background_color: 0.05, 0.15, 0.25, 1
+                        color: 1, 1, 1, 1
+                        on_press: root.login_user()
+                    
+                    # Footer Links Section
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: dp(45)
+                        spacing: dp(3)
+                        
+                        Label:
+                            text: 'Forgot Password?'
+                            font_size: '11sp'
+                            color: 0.4, 0.4, 0.4, 1
+                            size_hint_y: None
+                            height: dp(18)
+                        
+                        Button:
+                            text: 'Signup !'
+                            font_size: '11sp'
+                            color: 0.1, 0.3, 0.6, 1
+                            size_hint_y: None
+                            height: dp(24)
+                            background_color: 0, 0, 0, 0
+                            on_press: root.go_to_signup()
+<RegistrationScreen>:
+    name: 'registration'
+    
+    canvas.before:
+        Color:
+            rgba: 0.2, 0.8, 0.8, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    # Responsive Layout with proper content management
+    RelativeLayout:
+        # Back Button (Always visible)
+        Button:
+            text: '<-'
+            font_size: '22sp'
+            bold: True
+            size_hint: None, None
+            size: dp(45), dp(45)
+            pos_hint: {'x': 0.03, 'top': 0.96}
+            background_color: 0.05, 0.15, 0.25, 0.8
+            color: 1, 1, 1, 1
+            on_press: root.go_to_login()
+        
+        # Main Registration Content - Always Scrollable
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            pos_hint: {'center_x': 0.5, 'center_y': 0.48}  # Slight offset to avoid back button
+            size_hint: (0.9, 0.9) if root.width < root.height else (0.6, 0.85)
+            
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: self.minimum_height
+                padding: [dp(25), dp(30)]
+                spacing: dp(18)
+                
+                # White card background
+                canvas.before:
+                    Color:
+                        rgba: 0.95, 0.95, 0.97, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [dp(20)]
+                
+                # Top spacing
+                Widget:
+                    size_hint_y: None
+                    height: dp(20)
+                
+                # Logo and App Name Section
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(80)
+                    spacing: dp(5)
+                    
+                Image:
+                    source: 'logo.png'
+                    size_hint: None, None
+                    size: dp(100), dp(100)
+                    pos_hint: {'center_x': 0.5}
+                    
+                    Label:
+                        text: 'DISASTRA'
+                        font_size: '18sp' if root.width < root.height else '16sp'
+                        bold: True
+                        color: 0.1, 0.1, 0.1, 1
+                        size_hint_y: None
+                        height: dp(25)
+                
+                # Registration Title Section
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(60)
+                    spacing: dp(3)
+                    
+                    Label:
+                        text: 'Create new Account'
+                        font_size: '22sp' if root.width < root.height else '20sp'
+                        bold: True
+                        color: 0.1, 0.1, 0.1, 1
+                        size_hint_y: None
+                        height: dp(30)
+                    
+                    Label:
+                        text: 'Already Registered? Log in here.'
+                        font_size: '12sp' if root.width < root.height else '11sp'
+                        color: 0.4, 0.4, 0.4, 1
+                        size_hint_y: None
+                        height: dp(20)
+                
+                # Form Fields Section
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: dp(280)
+                    spacing: dp(15)
+                    
+                    # Name Field
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: dp(60)
+                        spacing: dp(5)
+                        
+                        Label:
+                            text: 'NAME'
+                            font_size: '11sp'
+                            color: 0.4, 0.4, 0.4, 1
+                            size_hint_y: None
+                            height: dp(15)
+                            halign: 'left'
+                            text_size: self.size
+                        
+                        TextInput:
+                            id: name_input
+                            hint_text: 'Jiara Martins'
+                            multiline: False
+                            font_size: '15sp' if root.width < root.height else '13sp'
+                            size_hint_y: None
+                            height: dp(40)
+                            background_color: 0.85, 0.85, 0.85, 1
+                            foreground_color: 0.1, 0.1, 0.1, 1
+                            padding: [dp(10), dp(6)]
+                    
+                    # Email Field
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: dp(60)
+                        spacing: dp(5)
+                        
+                        Label:
+                            text: 'EMAIL'
+                            font_size: '11sp'
+                            color: 0.4, 0.4, 0.4, 1
+                            size_hint_y: None
+                            height: dp(15)
+                            halign: 'left'
+                            text_size: self.size
+                        
+                        TextInput:
+                            id: email_input
+                            hint_text: 'hello@reallygreatsite.com'
+                            multiline: False
+                            font_size: '15sp' if root.width < root.height else '13sp'
+                            size_hint_y: None
+                            height: dp(40)
+                            background_color: 0.85, 0.85, 0.85, 1
+                            foreground_color: 0.1, 0.1, 0.1, 1
+                            padding: [dp(10), dp(6)]
+                    
+                    # Password Field
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: dp(60)
+                        spacing: dp(5)
+                        
+                        Label:
+                            text: 'PASSWORD'
+                            font_size: '11sp'
+                            color: 0.4, 0.4, 0.4, 1
+                            size_hint_y: None
+                            height: dp(15)
+                            halign: 'left'
+                            text_size: self.size
+                        
+                        TextInput:
+                            id: password_input
+                            hint_text: '••••••'
+                            password: True
+                            multiline: False
+                            font_size: '15sp' if root.width < root.height else '13sp'
+                            size_hint_y: None
+                            height: dp(40)
+                            background_color: 0.85, 0.85, 0.85, 1
+                            foreground_color: 0.1, 0.1, 0.1, 1
+                            padding: [dp(10), dp(6)]
+                    
+                    # Date of Birth Field
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint_y: None
+                        height: dp(60)
+                        spacing: dp(5)
+                        
+                        Label:
+                            text: 'DATE OF BIRTH'
+                            font_size: '11sp'
+                            color: 0.4, 0.4, 0.4, 1
+                            size_hint_y: None
+                            height: dp(15)
+                            halign: 'left'
+                            text_size: self.size
+                        
+                        TextInput:
+                            id: dob_input
+                            hint_text: 'DD/MM/YYYY'
+                            multiline: False
+                            font_size: '15sp' if root.width < root.height else '13sp'
+                            size_hint_y: None
+                            height: dp(40)
+                            background_color: 0.85, 0.85, 0.85, 1
+                            foreground_color: 0.1, 0.1, 0.1, 1
+                            padding: [dp(10), dp(6)]
+                
+                # Error Message
+                Label:
+                    id: error_label
+                    text: ''
+                    color: 0.8, 0.2, 0.2, 1
+                    font_size: '11sp'
+                    size_hint_y: None
+                    height: dp(25)
+                    text_size: self.size
+                    halign: 'center'
+                
+                # Sign up Button
+                Button:
+                    text: 'Sign up'
+                    font_size: '17sp' if root.width < root.height else '15sp'
+                    bold: True
+                    size_hint_y: None
+                    height: dp(45)
+                    background_color: 0.05, 0.15, 0.25, 1
+                    color: 1, 1, 1, 1
+                    on_press: root.register_user()
+                
+                # Bottom spacing
+                Widget:
+                    size_hint_y: None
+                    height: dp(30)
+
+
+<MenuScreen>:
+    name: 'menu'
+    
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    # Responsive Menu Layout
+    BoxLayout:
+        orientation: 'vertical' if root.width < root.height else 'horizontal'
+        padding: [dp(25), dp(30)]
+        spacing: dp(20)
+        
+        # Header Section
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.25) if root.width < root.height else (0.35, 1)
+            spacing: dp(8)
+            
+            Widget:
+                size_hint_y: 0.15
+            
+            Image:
+                source: 'logo.png'
+                size_hint: None, None
+                size: dp(100), dp(100)
+                pos_hint: {'center_x': 0.5}
+            
+            Label:
+                text: 'NIVAAR'
+                font_size: '22sp' if root.width < root.height else '26sp'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_y: 0.3
+            
+            Label:
+                id: user_welcome
+                text: 'Welcome!'
+                font_size: '14sp' if root.width < root.height else '16sp'
+                color: 0.9, 0.9, 0.9, 1
+                size_hint_y: 0.2
+        
+        # Menu Options Section
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.75) if root.width < root.height else (0.65, 1)
+            spacing: dp(12)
+            
+            Button:
+                text: 'DASHBOARD'
+                font_size: '15sp' if root.width < root.height else '13sp'
+                bold: True
+                size_hint_y: 0.18
+                background_color: 0.8, 0.4, 0.2, 1
+                color: 1, 1, 1, 1
+            
+            Button:
+                text: 'QUIZ'
+                font_size: '15sp' if root.width < root.height else '13sp'
+                bold: True
+                size_hint_y: 0.18
+                background_color: 0.5, 0.3, 0.8, 1
+                color: 1, 1, 1, 1
+            
+            Button:
+                text: 'EMERGENCY MESSAGES'
+                font_size: '15sp' if root.width < root.height else '13sp'
+                bold: True
+                size_hint_y: 0.18
+                background_color: 0.3, 0.6, 0.9, 1
+                color: 1, 1, 1, 1
+            
+            Button:
+                text: 'PROFILE'
+                font_size: '15sp' if root.width < root.height else '13sp'
+                bold: True
+                size_hint_y: 0.18
+                background_color: 0.9, 0.3, 0.3, 1
+                color: 1, 1, 1, 1
+            
+            Button:
+                text: 'LOGOUT'
+                font_size: '13sp' if root.width < root.height else '12sp'
+                size_hint_y: 0.15
+                background_color: 0.6, 0.6, 0.6, 1
+                color: 1, 1, 1, 1
+                on_press: root.logout()
+            
+            Widget:
+                size_hint_y: 0.13
