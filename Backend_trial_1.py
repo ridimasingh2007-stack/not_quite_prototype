@@ -21,10 +21,16 @@ def server_error(e):
 # emergency messages~
 def load_messages(disaster=None):
     with open('emergency_messages.json', 'r') as f:
-        messages = json.load(f)
+        data = json.load(f)
+
     if disaster:
-        messages = [m for m in messages if m['disaster'].lower() == disaster.lower()]
-    return messages
+        for d in data.get('disasters', []):
+            if d.get('type', '').lower() == disaster.lower():
+                return d
+        return {}  # No disaster found
+
+    return data
+
 
 # quiz questions~
 def load_quiz(level=None):
@@ -39,7 +45,7 @@ def load_quiz(level=None):
 def home():
     return "Disaster Preparedness Backend Running!"
 
-@app.route('/emergency_messages', methods=['GET'] )
+@app.route('/emergency_messages', methods=['GET'])
 def get_emergency_messages():
     disaster = request.args.get('disaster')
     messages = load_messages(disaster)
@@ -106,4 +112,5 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=port)
     
  
+
 
