@@ -1,0 +1,1197 @@
+ScreenManager:
+    WelcomeScreen:
+    RegistrationScreen:
+    MenuScreen:
+    DisastersScreen:
+    QuizLevelScreen:
+    QuizScreen:
+    QuizResultScreen:
+    EmergencyHelplinesScreen:
+    UserProfileScreen:  # Add this
+            
+                     
+
+<WelcomeScreen>:
+    name: 'welcome'
+    
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: dp(30)
+        padding: dp(40)
+        
+        Image:
+            source: 'logo.png'
+            size_hint: 1, 0.4
+        
+        Label:
+            text: 'DISASTRA'
+            font_size: '40sp'
+            bold: True
+            color: 1, 1, 1, 1
+            size_hint: 1, 0.3
+        
+        Label:
+            text: 'Your Disaster Awareness Friend'
+            font_size: '18sp'
+            color: 0.9, 0.9, 0.9, 1
+            size_hint: 1, 0.3
+
+<RegistrationScreen>:
+    name: 'registration'
+    
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.95, 0.97, 1  # Light background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(40)
+        spacing: dp(20)
+        
+        # Logo section
+        BoxLayout:
+            size_hint_y: 0.25
+            orientation: 'vertical'
+            
+            Image:
+                source: 'logo.png'
+                size_hint: None, None
+                size: dp(100), dp(100)
+                pos_hint: {'center_x': 0.5}
+        
+        # Title section
+        BoxLayout:
+            size_hint_y: 0.15
+            orientation: 'vertical'
+            
+            Label:
+                text: 'Create new Account'
+                font_size: '28sp'
+                bold: True
+                color: 0.2, 0.2, 0.2, 1
+                halign: 'center'
+                size_hint_y: 0.7
+            
+            Label:
+                text: 'Join DISASTRA to enhance your disaster awareness'
+                font_size: '14sp'
+                color: 0.5, 0.5, 0.5, 1
+                halign: 'center'
+                size_hint_y: 0.3
+        
+        # Form section
+        BoxLayout:
+            size_hint_y: 0.5
+            orientation: 'vertical'
+            spacing: dp(15)
+            
+            # Name field
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: dp(70)
+                spacing: dp(5)
+                
+                Label:
+                    text: 'FULL NAME'
+                    font_size: '12sp'
+                    color: 0.4, 0.4, 0.4, 1
+                    halign: 'left'
+                    size_hint_y: None
+                    height: dp(20)
+                    text_size: self.size
+                
+                TextInput:
+                    id: name_input
+                    hint_text: 'Enter your full name'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '16sp'
+                    background_color: 0.9, 0.9, 0.9, 1
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    cursor_color: 0.3, 0.6, 0.9, 1
+                    padding: dp(15), dp(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0.9, 0.9, 0.9, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [8,]
+            
+            # Email field
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: dp(70)
+                spacing: dp(5)
+                
+                Label:
+                    text: 'EMAIL (Optional)'
+                    font_size: '12sp'
+                    color: 0.4, 0.4, 0.4, 1
+                    halign: 'left'
+                    size_hint_y: None
+                    height: dp(20)
+                    text_size: self.size
+                
+                TextInput:
+                    id: email_input
+                    hint_text: 'your.email@example.com'
+                    multiline: False
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '16sp'
+                    background_color: 0.9, 0.9, 0.9, 1
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    cursor_color: 0.3, 0.6, 0.9, 1
+                    padding: dp(15), dp(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0.9, 0.9, 0.9, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [8,]
+            
+            # Age field
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: dp(70)
+                spacing: dp(5)
+                
+                Label:
+                    text: 'AGE'
+                    font_size: '12sp'
+                    color: 0.4, 0.4, 0.4, 1
+                    halign: 'left'
+                    size_hint_y: None
+                    height: dp(20)
+                    text_size: self.size
+                
+                TextInput:
+                    id: age_input
+                    hint_text: 'Enter your age (e.g., 25)'
+                    multiline: False
+                    input_filter: 'int'
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '16sp'
+                    background_color: 0.9, 0.9, 0.9, 1
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    cursor_color: 0.3, 0.6, 0.9, 1
+                    padding: dp(15), dp(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0.9, 0.9, 0.9, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [8,]
+            
+            # Phone field
+            BoxLayout:
+                orientation: 'vertical'
+                size_hint_y: None
+                height: dp(70)
+                spacing: dp(5)
+                
+                Label:
+                    text: 'PHONE NUMBER (Optional)'
+                    font_size: '12sp'
+                    color: 0.4, 0.4, 0.4, 1
+                    halign: 'left'
+                    size_hint_y: None
+                    height: dp(20)
+                    text_size: self.size
+                
+                TextInput:
+                    id: phone_input
+                    hint_text: '10-digit mobile number'
+                    multiline: False
+                    input_filter: 'int'
+                    size_hint_y: None
+                    height: dp(45)
+                    font_size: '16sp'
+                    background_color: 0.9, 0.9, 0.9, 1
+                    foreground_color: 0.2, 0.2, 0.2, 1
+                    cursor_color: 0.3, 0.6, 0.9, 1
+                    padding: dp(15), dp(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0.9, 0.9, 0.9, 1
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [8,]
+            
+            # Error message
+            Label:
+                id: error_label
+                text: ''
+                color: 0.9, 0.2, 0.2, 1
+                font_size: '13sp'
+                size_hint_y: None
+                height: dp(25)
+                halign: 'center'
+        
+        # Button section
+        BoxLayout:
+            size_hint_y: 0.1
+            
+            Button:
+                text: 'Join DISASTRA'
+                font_size: '18sp'
+                bold: True
+                size_hint_y: None
+                height: dp(50)
+                background_normal: ''
+                background_color: 0.2, 0.3, 0.2, 1  # Dark green/black
+                color: 1, 1, 1, 1
+                on_press: root.submit_form()
+                canvas.before:
+                    Color:
+                        rgba: 0.2, 0.3, 0.2, 1
+                    RoundedRectangle:
+                        pos: self.pos
+                        size: self.size
+                        radius: [8,]
+
+
+<MenuScreen>:
+    name: 'menu'
+    
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    # Use FloatLayout to position back button as overlay
+    FloatLayout:
+        # Main content
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: dp(10)
+            padding: dp(20)
+            
+            Label:
+                text: "DISASTRA - YOUR DISASTER AWARENESS FRIEND"
+                font_size: '16sp'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint: 1, 0.1
+            
+            Button:
+                text: "DISASTERS"
+                size_hint: 1, 0.225
+                font_size: '14sp'
+                bold: True
+                background_color: 0.7, 0.7, 0.2, 1
+                on_release:
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'disasters'
+            
+            Button:
+                text: "PREVENTIVE MEASURES"
+                size_hint: 1, 0.225
+                font_size: '14sp'
+                bold: True
+            
+            Button:
+                text: "EMERGENCY HELPLINES"
+                size_hint: 1, 0.225
+                font_size: '14sp'  
+                bold: True
+                background_color: 0.7, 0.1, 0.68, 1
+                on_release:
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'emergency_helplines'
+
+            
+            Button:
+                text: "QUIZ"
+                size_hint: 1, 0.225
+                font_size: '14sp'
+                bold: True
+                background_color: 0.5, 0.5, 0.5, 1
+                on_release:
+                    app.root.transition.direction = 'left'
+                    app.root.current = 'quiz_level'
+                                
+        
+        # Floating back button at top-left corner
+        Button:
+            text: "<-"
+            size_hint: None, None
+            size: dp(60), dp(40)
+            pos_hint: {'x': 0.02, 'top': 0.98}
+            font_size: '18sp'
+            bold: True
+            background_color: 0.8, 0.3, 0.3, 0.9
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'registration'
+
+<DisastersScreen>:
+    name: 'disasters'
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    # Use FloatLayout to position back button as overlay
+    FloatLayout:
+        # Main scrollable content
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            bar_color: 1, 1, 1, 0.7
+            bar_inactive_color: 1, 1, 1, 0.2
+
+            BoxLayout:
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: dp(15)
+                padding: dp(20), dp(60), dp(20), dp(20)  # Extra top padding for back button space
+                
+                # EARTHQUAKE (1st)
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.5, 0.5, 0.7, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "EARTHQUAKE"
+                        size_hint_y: None
+                        height: dp(40)
+                        bold: True
+                        font_size: '20sp'
+                        color: 0, 0, 0.5, 1
+                    Label:
+                        text: app.get_disaster_text("Earthquake")
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
+                        color: 1, 1, 1, 1
+
+                # FIRE (2nd)
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.9, 0.4, 0.3, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "FIRE"
+                        size_hint_y: None
+                        height: dp(40)
+                        bold: True
+                        font_size: '20sp'
+                        color: 0.5, 0, 0, 1
+                    Label:
+                        text: app.get_disaster_text("Fire")
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
+                        color: 1, 1, 1, 1
+
+                # FLOOD (3rd)
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.3, 0.5, 0.4, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "FLOOD"
+                        size_hint_y: None
+                        height: dp(40)
+                        bold: True
+                        font_size: '20sp'
+                        color: 0, 0.5, 0, 1
+                    Label:
+                        text: app.get_disaster_text("Flood")
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
+                        color: 1, 1, 1, 1
+
+                # CYCLONE (4th)
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.2, 0.4, 0.75, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "CYCLONE"
+                        size_hint_y: None
+                        height: dp(40)
+                        bold: True
+                        font_size: '20sp'
+                        color: 0, 0, 0.5, 1
+                    Label:
+                        text: app.get_disaster_text("Cyclone")
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
+                        color: 1, 1, 1, 1
+                    
+                # CYBER ATTACK (5th)
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.6, 0.3, 0.6, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "CYBER ATTACK"
+                        size_hint_y: None
+                        height: dp(40)
+                        bold: True
+                        font_size: '20sp'
+                        color: 0.5, 0, 0.5, 1
+                    Label:
+                        text: app.get_disaster_text("Cyber Attack")
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
+                        color: 1, 1, 1, 1
+        
+        # Floating back button at top-left corner
+        Button:
+            text: "<- back"
+            size_hint: None, None
+            size: dp(80), dp(40)
+            pos_hint: {'x': 0.02, 'top': 0.98}
+            font_size: '14sp'
+            bold: True
+            background_color: 0.8, 0.3, 0.3, 0.9
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'menu'
+
+
+# Quiz Level Selection Screen
+<QuizLevelScreen>:
+    name: 'quiz_level'
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    FloatLayout:
+        # Small back button in corner
+        Button:
+            text: "←"
+            size_hint: None, None
+            size: dp(60), dp(40)
+            pos_hint: {'top': 0.98, 'left': 0.02}
+            font_size: '18sp'
+            bold: True
+            background_color: 0.8, 0.3, 0.3, 1
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'menu'
+        
+        # Main content
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: dp(20)
+            padding: dp(40)
+            
+            # Fixed app name at top
+            Label:
+                text: "DISASTRA QUIZ"
+                font_size: '24sp'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint: 1, 0.2
+            
+            Label:
+                text: "Choose Difficulty Level"
+                font_size: '18sp'
+                color: 0.9, 0.9, 0.9, 1
+                size_hint: 1, 0.1
+            
+            # Level buttons
+            Button:
+                text: "BASIC"
+                size_hint: 1, 0.2
+                font_size: '16sp'
+                bold: True
+                background_color: 0.3, 0.7, 0.3, 1
+                on_release: root.start_quiz('Basic')
+            
+            Button:
+                text: "MEDIUM"
+                size_hint: 1, 0.2
+                font_size: '16sp'
+                bold: True
+                background_color: 0.7, 0.7, 0.2, 1
+                on_release: root.start_quiz('Intermediate')
+            
+            Button:
+                text: "HARD"
+                size_hint: 1, 0.2
+                font_size: '16sp'
+                bold: True
+                background_color: 0.7, 0.2, 0.2, 1
+                on_release: root.start_quiz('Hard')
+
+# Quiz Question Screen
+<QuizScreen>:
+    name: 'quiz'
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    FloatLayout:
+        # Small back button in corner
+        Button:
+            text: "←"
+            size_hint: None, None
+            size: dp(60), dp(40)
+            pos_hint: {'top': 0.98, 'left': 0.02}
+            font_size: '18sp'
+            bold: True
+            background_color: 0.8, 0.3, 0.3, 1
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'quiz_level'
+        
+        # Main quiz content
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: dp(15)
+                padding: dp(30)
+                size_hint_y: None
+                height: self.minimum_height
+                
+                # App name at top (fixed)
+                Label:
+                    text: "DISASTRA QUIZ"
+                    font_size: '20sp'
+                    bold: True
+                    color: 1, 1, 1, 1
+                    size_hint_y: None
+                    height: dp(50)
+                
+                # Progress info
+                Label:
+                    id: progress_label
+                    text: "Question 1 of 10"
+                    font_size: '14sp'
+                    color: 0.9, 0.9, 0.9, 1
+                    size_hint_y: None
+                    height: dp(30)
+                
+                # Question text
+                Label:
+                    id: question_label
+                    text: "Question will appear here"
+                    font_size: '16sp'
+                    bold: True
+                    color: 1, 1, 1, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    valign: 'top'
+                
+                # Option buttons
+                Button:
+                    id: option1
+                    text: "Option 1"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '14sp'
+                    text_size: self.width, None
+                    halign: 'center'
+                    valign: 'middle'
+                    on_release: root.select_answer(0)
+                
+                Button:
+                    id: option2
+                    text: "Option 2"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '14sp'
+                    text_size: self.width, None
+                    halign: 'center'
+                    valign: 'middle'
+                    on_release: root.select_answer(1)
+                
+                Button:
+                    id: option3
+                    text: "Option 3"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '14sp'
+                    text_size: self.width, None
+                    halign: 'center'
+                    valign: 'middle'
+                    on_release: root.select_answer(2)
+                
+                Button:
+                    id: option4
+                    text: "Option 4"
+                    size_hint_y: None
+                    height: dp(50)
+                    font_size: '14sp'
+                    text_size: self.width, None
+                    halign: 'center'
+                    valign: 'middle'
+                    on_release: root.select_answer(3)
+                
+                # Hint button
+                Button:
+                    text: "HINT"
+                    size_hint_y: None
+                    height: dp(40)
+                    font_size: '12sp'
+                    background_color: 0.2, 0.5, 0.8, 1
+                    on_release: root.show_hint()
+                
+                # Hint text (initially hidden)
+                Label:
+                    id: hint_label
+                    text: ""
+                    font_size: '12sp'
+                    color: 0.8, 0.8, 0.2, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1] if self.text else 0
+                    valign: 'top'
+
+# Quiz Result Screen
+<QuizResultScreen>:
+    name: 'quiz_result'
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    FloatLayout:
+        # Small back button in corner
+        Button:
+            text: "←"
+            size_hint: None, None
+            size: dp(60), dp(40)
+            pos_hint: {'top': 0.98, 'left': 0.02}
+            font_size: '18sp'
+            bold: True
+            background_color: 0.8, 0.3, 0.3, 1
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'quiz_level'
+        
+        # Main result content
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: dp(20)
+            padding: dp(40)
+            
+            # App name at top (fixed)
+            Label:
+                text: "DISASTRA QUIZ"
+                font_size: '24sp'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint: 1, 0.15
+            
+            Label:
+                text: "Quiz Complete!"
+                font_size: '20sp'
+                bold: True
+                color: 0.3, 0.8, 0.3, 1
+                size_hint: 1, 0.1
+            
+            Label:
+                id: score_label
+                text: "Your Score: 0/10"
+                font_size: '18sp'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint: 1, 0.1
+            
+            Label:
+                id: result_message
+                text: "Great job!"
+                font_size: '16sp'
+                color: 0.9, 0.9, 0.9, 1
+                size_hint: 1, 0.1
+            
+            # Action buttons
+            Button:
+                text: "TRY AGAIN"
+                size_hint: 1, 0.15
+                font_size: '16sp'
+                bold: True
+                background_color: 0.3, 0.7, 0.3, 1
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'quiz_level'
+            
+            Button:
+                text: "BACK TO MENU"
+                size_hint: 1, 0.15
+                font_size: '16sp'
+                bold: True
+                background_color: 0.7, 0.3, 0.3, 1
+                on_release:
+                    app.root.transition.direction = 'right'
+                    app.root.current = 'menu'
+
+                    
+# Emergency Helplines Screen
+<EmergencyHelplinesScreen>:
+    name: 'emergency_helplines'
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    FloatLayout:
+        ScrollView: 
+            do_scroll_x: False
+            do_scroll_y: True
+            bar_color: 1, 1, 1, 0.7
+            bar_inactive_color: 1, 1, 1, 0.2
+
+ # Main content
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            bar_color: 1, 1, 1, 0.7
+            bar_inactive_color: 1, 1, 1, 0.2
+
+            BoxLayout:
+                size_hint_y: None
+                height: self.minimum_height
+                orientation: 'vertical'
+                spacing: dp(20)
+                padding: dp(30), dp(60), dp(30), dp(30)  # Extra top padding for back button
+                
+                Image:
+                    source: 'logo.png'
+                    size_hint: 1, None
+                    height: dp(80)
+
+                # App name at top (fixed)
+                Label:
+                    text: "EMERGENCY HELPLINES"
+                    font_size: '24sp'
+                    bold: True
+                    color: 1, 1, 1, 1
+                    size_hint_y: None
+                    height: dp(60)
+                
+                Label:
+                    text: "India Emergency Contact Numbers"
+                    font_size: '16sp'
+                    color: 0.9, 0.9, 0.9, 1
+                    size_hint_y: None
+                    height: dp(40)
+                
+                # Police
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(60)
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.2, 0.4, 0.8, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "POLICE"
+                        font_size: '18sp'
+                        bold: True
+                        color: 1, 1, 1, 1
+                        size_hint_x: 0.6
+                    Label:
+                        text: "100"
+                        font_size: '20sp'
+                        bold: True
+                        color: 0.3, 0.8, 0.3, 1
+                        size_hint_x: 0.4
+                
+                # Ambulance
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(60)
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.8, 0.2, 0.2, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "AMBULANCE"
+                        font_size: '18sp'
+                        bold: True
+                        color: 1, 1, 1, 1
+                        size_hint_x: 0.6
+                    Label:
+                        text: "108"
+                        font_size: '20sp'
+                        bold: True
+                        color: 0.3, 0.8, 0.3, 1
+                        size_hint_x: 0.4
+                
+                # Fire
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(60)
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.9, 0.4, 0.1, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "FIRE BRIGADE"
+                        font_size: '18sp'
+                        bold: True
+                        color: 1, 1, 1, 1
+                        size_hint_x: 0.6
+                    Label:
+                        text: "101"
+                        font_size: '20sp'
+                        bold: True
+                        color: 0.3, 0.8, 0.3, 1
+                        size_hint_x: 0.4
+                
+                # All Emergency
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(60)
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.6, 0.2, 0.6, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "ALL EMERGENCY"
+                        font_size: '18sp'
+                        bold: True
+                        color: 1, 1, 1, 1
+                        size_hint_x: 0.6
+                    Label:
+                        text: "112"
+                        font_size: '20sp'
+                        bold: True
+                        color: 0.3, 0.8, 0.3, 1
+                        size_hint_x: 0.4
+                
+                # NDRF Section Header
+                Label:
+                    text: "NATIONAL DISASTER RESPONSE FORCE (NDRF)"
+                    font_size: '16sp'
+                    bold: True
+                    color: 0.9, 0.9, 0.9, 1
+                    size_hint_y: None
+                    height: dp(50)
+                
+                # NDRF 1
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(60)
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.3, 0.6, 0.3, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "NDRF CONTROL ROOM 1"
+                        font_size: '16sp'
+                        bold: True
+                        color: 1, 1, 1, 1
+                        size_hint_x: 0.5
+                    Label:
+                        text: "011-23438017"
+                        font_size: '18sp'
+                        bold: True
+                        color: 0.3, 0.8, 0.3, 1
+                        size_hint_x: 0.5
+                
+                # NDRF 2
+                BoxLayout:
+                    orientation: 'horizontal'
+                    size_hint_y: None
+                    height: dp(60)
+                    padding: dp(15)
+                    canvas.before:
+                        Color:
+                            rgba: 0.3, 0.6, 0.3, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    Label:
+                        text: "NDRF CONTROL ROOM 2"
+                        font_size: '16sp'
+                        bold: True
+                        color: 1, 1, 1, 1
+                        size_hint_x: 0.5
+                    Label:
+                        text: "011-23438019"
+                        font_size: '18sp'
+                        bold: True
+                        color: 0.3, 0.8, 0.3, 1
+                        size_hint_x: 0.5
+                
+                # Important Note
+                Label:
+                    text: "⚠ IMPORTANT: In case of emergency, call immediately!\nDo not hesitate to reach out for help."
+                    font_size: '14sp'
+                    color: 1, 0.8, 0.2, 1
+                    text_size: self.width, None
+                    size_hint_y: None
+                    height: self.texture_size[1]
+                    valign: 'top'
+                    halign: 'center'
+        # Small back button in corner
+        Button:
+            text: "<-,->" 
+            size_hint: None, None
+            size: dp(60), dp(40)
+            pos_hint: {'x': 0.02, 'top': 0.98}
+            font_size: '14sp'
+            bold: True
+            background_color: 0.8, 0.3, 0.3, 1
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'menu'
+        
+ 
+<UserProfileScreen>:
+    name: 'user_profile'
+    canvas.before:
+        Color:
+            rgba: 0.1, 0.3, 0.6, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    FloatLayout:
+        # Back button
+        Button:
+            text: "← BACK"
+            size_hint: None, None
+            size: dp(100), dp(40)
+            pos_hint: {'x': 0.02, 'top': 0.98}
+            font_size: '14sp'
+            bold: True
+            background_color: 0.8, 0.3, 0.3, 0.9
+            on_release:
+                app.root.transition.direction = 'right'
+                app.root.current = 'menu'
+        
+        ScrollView:
+            do_scroll_x: False
+            do_scroll_y: True
+            
+            BoxLayout:
+                orientation: 'vertical'
+                spacing: dp(20)
+                padding: dp(30), dp(60), dp(30), dp(30)
+                size_hint_y: None
+                height: self.minimum_height
+                
+                # Logo
+                Image:
+                    source: 'logo.png'
+                    size_hint: 1, None
+                    height: dp(60)
+                
+                # Profile Header
+                Label:
+                    text: "USER PROFILE & STATISTICS"
+                    font_size: '20sp'
+                    bold: True
+                    color: 1, 1, 1, 1
+                    size_hint_y: None
+                    height: dp(50)
+                
+                # User Info
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    spacing: dp(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0.2, 0.4, 0.8, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    
+                    Label:
+                        text: "👤 USER INFORMATION"
+                        font_size: '18sp'
+                        bold: True
+                        color: 0.4, 0.6, 1, 1
+                        size_hint_y: None
+                        height: dp(40)
+                    
+                    Label:
+                        id: user_info_label
+                        text: "Loading user information..."
+                        font_size: '14sp'
+                        color: 1, 1, 1, 1
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
+                
+                # Quiz Statistics
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    spacing: dp(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0.2, 0.6, 0.2, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    
+                    Label:
+                        text: "📊 QUIZ STATISTICS"
+                        font_size: '18sp'
+                        bold: True
+                        color: 0.4, 0.8, 0.4, 1
+                        size_hint_y: None
+                        height: dp(40)
+                    
+                    Label:
+                        id: quiz_stats_label
+                        text: "Loading quiz statistics..."
+                        font_size: '14sp'
+                        color: 1, 1, 1, 1
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
+                
+                # Achievements
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: None
+                    height: self.minimum_height
+                    padding: dp(15)
+                    spacing: dp(10)
+                    canvas.before:
+                        Color:
+                            rgba: 0.8, 0.6, 0.2, 0.3
+                        RoundedRectangle:
+                            pos: self.pos
+                            size: self.size
+                            radius: [10,]
+                    
+                    Label:
+                        text: "🏆 ACHIEVEMENTS"
+                        font_size: '18sp'
+                        bold: True
+                        color: 0.9, 0.7, 0.2, 1
+                        size_hint_y: None
+                        height: dp(40)
+                    
+                    Label:
+                        id: achievements_label
+                        text: "Loading achievements..."
+                        font_size: '14sp'
+                        color: 1, 1, 1, 1
+                        text_size: self.width, None
+                        size_hint_y: None
+                        height: self.texture_size[1]
+                        valign: 'top'
